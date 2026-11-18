@@ -1,4 +1,4 @@
-// Deal Dude site behaviour: theme toggle, mobile nav, Black Friday countdown.
+// Deals Dude site behaviour: theme toggle, mobile nav, Black Friday countdown.
 (function () {
   var root = document.documentElement;
 
