@@ -372,3 +372,11 @@ details summary::marker { color: var(--ink-3); }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 .band-flush { padding-top: 0; padding-bottom: 0; }
 .no-link { font-size: 0.9rem; color: var(--ink-2); white-space: nowrap; }
+
+/* ---- phone plans ---------------------------------------------------------------------- */
+.plan-filters { display: flex; flex-direction: column; gap: 4px; margin: 0 0 28px; }
+.plan-filters .chips { justify-content: flex-start; margin-top: 10px; }
+.fine-inline { font-size: 0.82rem; color: var(--ink-3); font-weight: 400; white-space: normal; }
+table.plan-table td.num { white-space: normal; }
+table.plan-table tr[hidden] { display: none; }
+table.plan-table .cond { margin-top: 6px; }
