@@ -61,13 +61,14 @@
 
     function card(it) {
       var price = it.p == null ? '<span class="price muted">Out of stock</span>'
-        : '<span class="price">' + money(it.p) + "</span>" + (it.w ? '<s class="was">' + money(it.w) + "</s>" : "");
-      var where = it.p == null ? "" : '<p><span class="cond cond-' + esc(it.c) + '">' + esc(COND[it.c] || it.c) +
-        "</span> at " + esc(it.r) + "</p>";
+        : '<span class="price">' + money(it.p) + "</span>" +
+          (it.w ? '<s class="was">' + money(it.w) + '</s><span class="tag-off">' + Math.round((1 - it.p / it.w) * 100) + "% off</span>" : "");
+      var where = it.p == null ? "" : '<div class="where"><span class="cond cond-' + esc(it.c) + '">' + esc(COND[it.c] || it.c) +
+        "</span><span>at " + esc(it.r) + "</span></div>";
       return '<a class="card glass deal-card" href="../' + esc(it.u) + '">' +
         (it.b ? '<span class="pill">' + esc(it.b) + "</span>" : "") +
         "<h3>" + esc(it.t) + '</h3><div class="price-row">' + price + "</div>" + where +
-        '<span class="more">Compare ' + it.n + " offer" + (it.n === 1 ? "" : "s") + " →</span></a>";
+        '<span class="more">Compare ' + it.n + " offer" + (it.n === 1 ? "" : "s") + "</span></a>";
     }
 
     function render() {

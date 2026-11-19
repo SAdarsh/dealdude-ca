@@ -36,6 +36,9 @@
         var open = nav.classList.toggle("open");
         menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       });
+      nav.addEventListener("click", function (e) {
+        if (e.target.closest("a")) { nav.classList.remove("open"); menuBtn.setAttribute("aria-expanded", "false"); }
+      });
     }
 
     var year = document.querySelector("[data-year]");

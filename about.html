@@ -9,50 +9,57 @@
 <meta property="og:title" content="About">
 <meta property="og:description" content="Why Deals Dude exists and how we work.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#E1AD01">
+<meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
 <script>try{var t=localStorage.getItem("dd-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <script src="assets/site.js" defer></script>
+
 </head>
 <body>
-<div class="backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
-<header class="site-header glass">
-  <a class="brand" href="index.html"><img class="brand-mark" src="assets/favicon.svg" alt="" width="30" height="30">Deals Dude</a>
-  <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="deals/index.html">Compare</a><a href="guides/index.html">Guides</a><a href="about.html" aria-current="page">About</a><a href="contact.html">Contact</a></nav>
-  <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
-</header>
-<main class="wrap">
-
-<article class="article glass">
-  <span class="pill">About</span>
-  <h1 style="margin-top:14px">Why Deals Dude?</h1>
-  <p>Shopping for electronics in Canada usually means opening a dozen tabs: the big retailers, the computer stores, the marketplaces, and their separate open-box and refurbished sections. Prices change constantly, especially in November.</p>
-  <p>Deals Dude is building one place to see them side by side: new, open box and refurbished, with price history so you can tell a real deal from a marketing number.</p>
-  <h2>How we work</h2>
-  <ul>
-    <li><strong>Independent.</strong> We are not owned by any retailer. Our guides are written to be useful, not to push a store.</li>
-    <li><strong>Transparent.</strong> Some links earn us a commission. That never changes the price you pay, and it never decides which offer we show as cheapest. See our <a href="disclosure.html">affiliate disclosure</a>.</li>
-    <li><strong>Honest about prices.</strong> Prices change quickly. We always point you to the retailer's page to confirm the final price.</li>
-  </ul>
-  <p>Questions or feedback? <a href="contact.html">Get in touch</a>.</p>
-</article>
-
-</main>
-<div class="wrap">
-<footer class="site-footer glass">
-  <div class="footer-grid">
-    <div><strong>Deals Dude</strong> · Price comparison for Canadian shoppers · © <span data-year>2026</span></div>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="deals/index.html">Compare</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a href="disclosure.html">Affiliate disclosure</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a>
-    </nav>
+<div class="backdrop" aria-hidden="true"><span></span><span></span></div>
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img class="brand-mark" src="assets/favicon.svg" alt="" width="26" height="26">Deals Dude</a>
+    <nav class="nav" id="site-nav" aria-label="Main"><a href="index.html">Home</a><a href="deals/index.html">Compare</a><a href="guides/index.html">Guides</a><a href="about.html" aria-current="page">About</a><a href="contact.html">Contact</a></nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="deals/index.html" aria-label="Search deals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
   </div>
-  <p class="disclosure">As an Amazon Associate, Deals Dude earns from qualifying purchases. Some links on this site are affiliate links, which means we may earn a commission at no extra cost to you. Prices and availability change often, so always confirm the final price on the retailer's site. <a href="disclosure.html">Learn more</a>.</p>
-</footer>
+</header>
+<main>
+<section class="band band-flush"><div class="container container-narrow">
+<header class="article-head"><span class="eyebrow">About</span><h1>Why Deals Dude?</h1></header>
+<div class="prose">
+<p>Shopping for electronics in Canada usually means opening a dozen tabs: the big retailers, the computer stores, the marketplaces, and their separate open-box and refurbished sections. Prices change constantly, especially in November.</p>
+<p>Deals Dude puts them side by side: new, open box and refurbished, with price history so you can tell a real deal from a marketing number.</p>
+<h2>How we work</h2>
+<ul>
+  <li><strong>Independent.</strong> We are not owned by any retailer. Our guides are written to be useful, not to push a store.</li>
+  <li><strong>Transparent.</strong> Some links earn us a commission. That never changes the price you pay, and it never decides which offer we show as cheapest. See our <a href="disclosure.html">affiliate disclosure</a>.</li>
+  <li><strong>Honest about prices.</strong> Prices change quickly. Every price shows when we last checked it, and we always point you to the retailer to confirm.</li>
+  <li><strong>A polite crawler.</strong> Our price checker identifies itself as DealsDudeBot, follows each site's robots.txt and keeps its request rate low.</li>
+</ul>
+<p>Questions or feedback? <a href="contact.html">Get in touch</a>.</p>
 </div>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><strong>Deals Dude</strong> · Price comparison for Canadian shoppers · © <span data-year>2026</span></div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="deals/index.html">Compare</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a href="disclosure.html">Affiliate disclosure</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <p class="disclosure">As an Amazon Associate, Deals Dude earns from qualifying purchases. Some links on this site are affiliate links, which means we may earn a commission at no extra cost to you. Prices and availability change often, so always confirm the final price on the retailer's site. <a href="disclosure.html">Learn more</a>.</p>
+  </div>
+</footer>
 </body>
 </html>
