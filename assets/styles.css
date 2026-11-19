@@ -92,7 +92,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, sans-serif;
   font-size: 17px;
   line-height: 1.5;
   letter-spacing: -0.012em;
@@ -371,3 +371,4 @@ details summary::marker { color: var(--ink-3); }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 .band-flush { padding-top: 0; padding-bottom: 0; }
+.no-link { font-size: 0.9rem; color: var(--ink-2); white-space: nowrap; }

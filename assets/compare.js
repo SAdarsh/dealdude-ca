@@ -140,5 +140,11 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () { times(); search(); charts(); });
+  function forms() { // replaces inline onsubmit handlers, which the CSP forbids
+    document.querySelectorAll("form[data-no-submit]").forEach(function (f) {
+      f.addEventListener("submit", function (e) { e.preventDefault(); });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () { forms(); times(); search(); charts(); });
 })();
