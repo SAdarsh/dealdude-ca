@@ -206,19 +206,117 @@ img { max-width: 100%; height: auto; }
 .cond-refurbished_manufacturer, .cond-refurbished_seller { background: rgba(48, 176, 199, 0.14); }
 .cond-used { background: rgba(142, 142, 147, 0.18); }
 
-/* Deal verdicts (publish/verdict.py): green = real, grey = neutral / unknown, muted red = inflated. */
-.verdict { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; color: var(--ink); background: var(--hairline-soft); white-space: nowrap; letter-spacing: 0; }
-.verdict::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #8e8e93; flex: none; }
-.v-steal, .v-honest { background: rgba(52, 199, 89, 0.15); }
-.v-steal::before, .v-honest::before { background: #30b552; }
-.v-hike, .v-phantom { background: rgba(255, 59, 48, 0.12); }
-.v-hike::before, .v-phantom::before { background: #e5453b; }
-.v-wait::before { background: #ff9f0a; }
+/* ---------------------------------------------------------------- deal verdicts (publish/verdict.py)
+   Each verdict has a colour (--v-c), a tint (--v-bg) and an icon. Real deals are green/teal, fakes
+   red/purple, neutral grey/amber, unknown blue. Text stays --ink for contrast. */
+.v-steal   { --v-c: #30b552; --v-bg: rgba(48, 181, 82, 0.15);  --v-icon: "🎉"; }
+.v-honest  { --v-c: #0fa3b1; --v-bg: rgba(15, 163, 177, 0.15); --v-icon: "👍"; }
+.v-same    { --v-c: #8e8e93; --v-bg: rgba(142, 142, 147, 0.17); --v-icon: "😐"; }
+.v-wait    { --v-c: #ff9f0a; --v-bg: rgba(255, 159, 10, 0.16); --v-icon: "⏳"; }
+.v-hike    { --v-c: #e5453b; --v-bg: rgba(229, 69, 59, 0.13);  --v-icon: "✂️"; }
+.v-phantom { --v-c: #8e5cf7; --v-bg: rgba(142, 92, 247, 0.15); --v-icon: "👻"; }
+.v-fresh   { --v-c: #0a84ff; --v-bg: rgba(10, 132, 255, 0.13); --v-icon: "🐣"; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .v-steal   { --v-c: #3ddc68; --v-bg: rgba(61, 220, 104, 0.22); }
+  :root:not([data-theme="light"]) .v-honest  { --v-c: #3cc8d6; --v-bg: rgba(60, 200, 214, 0.22); }
+  :root:not([data-theme="light"]) .v-same    { --v-c: #aeaeb2; --v-bg: rgba(174, 174, 178, 0.2); }
+  :root:not([data-theme="light"]) .v-wait    { --v-c: #ffb340; --v-bg: rgba(255, 179, 64, 0.22); }
+  :root:not([data-theme="light"]) .v-hike    { --v-c: #ff6961; --v-bg: rgba(255, 105, 97, 0.22); }
+  :root:not([data-theme="light"]) .v-phantom { --v-c: #b08cff; --v-bg: rgba(176, 140, 255, 0.22); }
+  :root:not([data-theme="light"]) .v-fresh   { --v-c: #409cff; --v-bg: rgba(64, 156, 255, 0.22); }
+}
+:root[data-theme="dark"] .v-steal   { --v-c: #3ddc68; --v-bg: rgba(61, 220, 104, 0.22); }
+:root[data-theme="dark"] .v-honest  { --v-c: #3cc8d6; --v-bg: rgba(60, 200, 214, 0.22); }
+:root[data-theme="dark"] .v-same    { --v-c: #aeaeb2; --v-bg: rgba(174, 174, 178, 0.2); }
+:root[data-theme="dark"] .v-wait    { --v-c: #ffb340; --v-bg: rgba(255, 179, 64, 0.22); }
+:root[data-theme="dark"] .v-hike    { --v-c: #ff6961; --v-bg: rgba(255, 105, 97, 0.22); }
+:root[data-theme="dark"] .v-phantom { --v-c: #b08cff; --v-bg: rgba(176, 140, 255, 0.22); }
+:root[data-theme="dark"] .v-fresh   { --v-c: #409cff; --v-bg: rgba(64, 156, 255, 0.22); }
+
+.verdict {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 12px 3px 9px; border-radius: 999px; font-size: 0.8rem; font-weight: 650; letter-spacing: 0;
+  color: var(--ink); background: var(--v-bg, var(--hairline-soft)); white-space: nowrap;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--v-c, #8e8e93) 35%, transparent);
+  text-decoration: none;
+}
+.verdict::before { content: var(--v-icon, ""); display: inline-block; font-size: 0.95em; line-height: 1; }
+a.verdict:hover { box-shadow: inset 0 0 0 1.5px var(--v-c); }
+
 .deal-card .verdict { align-self: flex-start; }
+.deal-card[class*="verdict-"] { position: relative; overflow: hidden; }
+.deal-card[class*="verdict-"]::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--v-c); opacity: 0.85;
+}
+.deal-card.verdict-steal   { --v-c: #30b552; } .deal-card.verdict-honest { --v-c: #0fa3b1; }
+.deal-card.verdict-same    { --v-c: #8e8e93; } .deal-card.verdict-wait   { --v-c: #ff9f0a; }
+.deal-card.verdict-hike    { --v-c: #e5453b; } .deal-card.verdict-phantom { --v-c: #8e5cf7; }
+.deal-card.verdict-fresh   { --v-c: #0a84ff; }
+.deal-card[class*="verdict-"]:hover { box-shadow: var(--glass-shadow), 0 0 0 1.5px color-mix(in srgb, var(--v-c) 45%, transparent); }
+
 .verdict-box { display: grid; gap: 8px; justify-items: start; margin: 4px 0 8px; }
 .verdict-box .fine { margin: 0; }
+.verdict-box .verdict { font-size: 0.88rem; padding: 5px 14px 5px 11px; }
 .verdict-list { list-style: none; padding: 0; display: grid; gap: 14px; }
 .verdict-list .verdict { margin-right: 8px; }
+.verdict-legend { display: flex; flex-wrap: wrap; gap: 8px; margin: -8px 0 28px; }
+
+/* Effects layer for confetti and sparkles (site/assets/verdict.js). */
+.fx-layer { position: fixed; inset: 0; pointer-events: none; z-index: 100; overflow: hidden; }
+.confetti, .sparkle { position: absolute; left: var(--x); top: var(--y); background: var(--c); opacity: 0; }
+.confetti { width: 8px; height: 12px; border-radius: 2px; }
+.confetti.round { width: 8px; height: 8px; border-radius: 50%; }
+.sparkle { width: 6px; height: 6px; border-radius: 50%; box-shadow: 0 0 8px var(--c); }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Cards: each verdict's icon does its thing on hover. */
+  .deal-card:hover .v-steal::before, .best-box.animate .v-steal::before { animation: v-pop 0.9s ease-in-out 2; }
+  .deal-card:hover .v-honest::before, .best-box.animate .v-honest::before { animation: v-nod 0.7s ease-in-out 2; }
+  .deal-card:hover .v-same::before, .best-box.animate .v-same::before { animation: v-tilt 1.6s ease-in-out 2; }
+  .deal-card:hover .v-wait::before, .best-box.animate .v-wait::before { animation: v-flip 1.4s ease-in-out 2; }
+  .deal-card:hover .v-hike, .best-box.animate .v-hike { animation: v-shake 0.5s ease-in-out 2; }
+  .deal-card:hover .v-phantom::before, .best-box.animate .v-phantom::before { animation: v-float 1.6s ease-in-out infinite; }
+  .deal-card:hover .v-fresh::before, .best-box.animate .v-fresh::before { animation: v-wobble 1.2s ease-in-out 2; }
+
+  /* Legit Steal: a shine sweeps across the pill. */
+  .v-steal::after {
+    content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.65) 50%, transparent 70%);
+  }
+  .deal-card:hover .v-steal::after, .best-box.animate .v-steal::after { animation: v-shine 1.1s ease-out 0.2s; }
+
+  /* Hike & Slash: the "was" price gets slashed. Phantom: it fades like a ghost. */
+  .best-box.animate[data-verdict="hike"] .was-claim { position: relative; text-decoration: none; }
+  .best-box.animate[data-verdict="hike"] .was-claim::after {
+    content: ""; position: absolute; left: -4%; top: 50%; height: 2px; width: 108%; background: var(--red, #e5453b);
+    transform: rotate(-8deg) scaleX(0); transform-origin: left center; animation: slash-draw 0.45s 0.6s ease-out forwards;
+  }
+  .best-box.animate[data-verdict="phantom"] .was-claim { animation: ghost-fade 2.4s 0.4s ease-in-out forwards; }
+
+  .confetti { animation: confetti-fly var(--dur) cubic-bezier(0.2, 0.7, 0.4, 1) var(--delay) forwards; }
+  .sparkle { animation: sparkle-out var(--dur) ease-out var(--delay) forwards; }
+}
+
+@keyframes v-pop { 0%, 100% { transform: scale(1) rotate(0); } 40% { transform: scale(1.35) rotate(-12deg); } 70% { transform: scale(0.95) rotate(8deg); } }
+@keyframes v-nod { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(-14deg); } }
+@keyframes v-tilt { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+@keyframes v-flip { 0%, 40% { transform: rotate(0); } 60%, 100% { transform: rotate(180deg); } }
+@keyframes v-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-3px) rotate(-2deg); } 40% { transform: translateX(3px) rotate(2deg); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } }
+@keyframes v-float { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(-4px); opacity: 0.55; } }
+@keyframes v-wobble { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-15deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(5deg); } }
+@keyframes v-shine { to { transform: translateX(120%); } }
+@keyframes slash-draw { to { transform: rotate(-8deg) scaleX(1); } }
+@keyframes ghost-fade { 0% { opacity: 1; filter: blur(0); } 50% { opacity: 0.3; filter: blur(1.5px); } 100% { opacity: 0.4; filter: blur(0.6px); } }
+@keyframes confetti-fly {
+  0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+  55% { opacity: 1; transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) * 0.6)); }
+  100% { opacity: 0; transform: translate(calc(var(--dx) * 1.15), calc(var(--dy) + var(--fall))) rotate(var(--rot)); }
+}
+@keyframes sparkle-out {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.2); }
+}
 
 /* ---------------------------------------------------------------- grids & cards */
 .grid { display: grid; gap: clamp(20px, 2.4vw, 32px); }
