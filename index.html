@@ -15,9 +15,10 @@
 <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/styles.css">
-<script src="assets/theme.js"></script>
-<script src="assets/site.js" defer></script>
+<link rel="stylesheet" href="assets/styles.css?v=ade64d59b5">
+<script src="assets/theme.js?v=97edfe3c23"></script>
+<script src="assets/site.js?v=feedf5866b" defer></script>
+<script src="assets/suggest.js?v=dc4d6b21c9" defer></script>
 
 </head>
 <body>
@@ -39,6 +40,14 @@
   <span class="eyebrow">Made for Canadian shoppers</span>
   <h1>The best price. New, open box or refurbished.</h1>
   <p class="lead">Deals Dude compares prices across Canadian retailers, including the open-box and refurbished deals most people miss.</p>
+  <form class="search home-search" role="search" data-home-search data-no-submit>
+    <label for="home-search" class="sr-only">Search products</label>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="home-search" type="search" placeholder="Try &quot;Switch 2&quot;" autocomplete="off" spellcheck="false"
+           role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="home-suggest" data-examples="[&quot;Switch 2&quot;, &quot;WH-1000XM6&quot;, &quot;OLED monitor&quot;, &quot;Galaxy S25&quot;, &quot;Xbox&quot;, &quot;DualSense&quot;]">
+    <ul id="home-suggest" class="suggest glass" role="listbox" aria-label="Suggestions" hidden></ul>
+  </form>
+  <div class="hint-chips"><span>Popular:</span><a class="chip" href="deals/index.html?q=Switch%202">Switch 2</a><a class="chip" href="deals/index.html?q=WH-1000XM6">WH-1000XM6</a><a class="chip" href="deals/index.html?q=OLED%20monitor">OLED monitor</a><a class="chip" href="deals/index.html?q=Galaxy%20S25">Galaxy S25</a><a class="chip" href="deals/index.html?q=Xbox">Xbox</a><a class="chip" href="deals/index.html?q=DualSense">DualSense</a></div>
   <div class="actions">
     <a class="btn btn-primary" href="deals/index.html">Compare prices</a>
     <a class="btn btn-ghost" href="guides/black-friday-2026-canada-guide.html">Black Friday game plan</a>
