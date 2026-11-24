@@ -23,6 +23,8 @@
 
   function squash(s) { return String(s).toLowerCase().replace(/[^a-z0-9]/g, ""); }
 
+  var VERDICT = { steal: "Legit Steal", honest: "Honest Markdown", same: "Same Old Price", wait: "Wait for It",
+    hike: "Hike &amp; Slash", phantom: "Phantom Discount", fresh: "Too Fresh to Call" };
   var COND = { new: "New", open_box: "Open box", refurbished_manufacturer: "Manufacturer refurbished",
                refurbished_seller: "Seller refurbished", used: "Used" };
 
@@ -64,7 +66,8 @@
         : '<span class="price">' + money(it.p) + "</span>" +
           (it.w ? '<s class="was">' + money(it.w) + '</s><span class="tag-off">' + Math.round((1 - it.p / it.w) * 100) + "% off</span>" : "");
       var where = it.p == null ? "" : '<div class="where"><span class="cond cond-' + esc(it.c) + '">' + esc(COND[it.c] || it.c) +
-        "</span><span>at " + esc(it.r) + "</span></div>";
+        "</span><span>at " + esc(it.r) + "</span></div>" +
+        (Object.prototype.hasOwnProperty.call(VERDICT, it.v) ?'<span class="verdict v-' + esc(it.v) + '">' + VERDICT[it.v] + "</span>" : "");
       return '<a class="card glass deal-card" href="../' + esc(it.u) + '">' +
         (it.b ? '<span class="pill">' + esc(it.b) + "</span>" : "") +
         "<h3>" + esc(it.t) + '</h3><div class="price-row">' + price + "</div>" + where +

@@ -206,6 +206,20 @@ img { max-width: 100%; height: auto; }
 .cond-refurbished_manufacturer, .cond-refurbished_seller { background: rgba(48, 176, 199, 0.14); }
 .cond-used { background: rgba(142, 142, 147, 0.18); }
 
+/* Deal verdicts (publish/verdict.py): green = real, grey = neutral / unknown, muted red = inflated. */
+.verdict { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px; border-radius: 999px; font-size: 0.8rem; font-weight: 600; color: var(--ink); background: var(--hairline-soft); white-space: nowrap; letter-spacing: 0; }
+.verdict::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #8e8e93; flex: none; }
+.v-steal, .v-honest { background: rgba(52, 199, 89, 0.15); }
+.v-steal::before, .v-honest::before { background: #30b552; }
+.v-hike, .v-phantom { background: rgba(255, 59, 48, 0.12); }
+.v-hike::before, .v-phantom::before { background: #e5453b; }
+.v-wait::before { background: #ff9f0a; }
+.deal-card .verdict { align-self: flex-start; }
+.verdict-box { display: grid; gap: 8px; justify-items: start; margin: 4px 0 8px; }
+.verdict-box .fine { margin: 0; }
+.verdict-list { list-style: none; padding: 0; display: grid; gap: 14px; }
+.verdict-list .verdict { margin-right: 8px; }
+
 /* ---------------------------------------------------------------- grids & cards */
 .grid { display: grid; gap: clamp(20px, 2.4vw, 32px); }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
