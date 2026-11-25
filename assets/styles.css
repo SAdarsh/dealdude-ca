@@ -84,6 +84,19 @@
   color-scheme: dark;
 }
 
+/* ---------------------------------------------------------------- fonts
+   Self-hosted, SIL Open Font License (assets/fonts/OFL-*.txt): Doto (dot-matrix display),
+   Space Grotesk (text), Space Mono (labels). Self-hosting keeps the CSP first-party only. */
+@font-face { font-family: "Doto"; src: url("fonts/doto.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("fonts/space-grotesk.woff2") format("woff2"); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("fonts/space-mono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Space Mono"; src: url("fonts/space-mono-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+:root {
+  --font-dot: "Doto", "Space Mono", ui-monospace, monospace;
+  --font-sans: "Space Grotesk", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+
 /* ---------------------------------------------------------------- base */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
@@ -92,10 +105,10 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.5;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -513,3 +526,25 @@ details summary::marker { color: var(--ink-3); }
 table.plan-table td.num { white-space: normal; }
 table.plan-table tr[hidden] { display: none; }
 table.plan-table .cond { margin-top: 6px; }
+
+/* ---------------------------------------------------------------- type system (dot-matrix look)
+   Doto for the big moments (headings, prices, countdown), Space Mono for small labels,
+   Space Grotesk for everything people read at length. */
+h1, h2, .brand, .price, .best-price, .countdown .num {
+  font-family: var(--font-dot); font-weight: 800; letter-spacing: 0.01em;
+}
+h1 { line-height: 1.02; }
+h2 { line-height: 1.05; }
+.price, .best-price, .countdown .num { font-variant-numeric: normal; letter-spacing: 0.02em; }
+.brand { font-size: 1.2rem; }
+/* Long product names stay in the text face: dot-matrix is for short, bold lines. */
+h1.product-title, h3 { font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.02em; }
+
+.eyebrow, .pill, .chip, .tag-off, .cond, .verdict, .meta, .fine, .countdown .label, .countdown small,
+.countdown .dates, .hint-chips > span, .nav a, .label, .more, .link-arrow, .sg-meta, th, .crumbs, time {
+  font-family: var(--font-mono); letter-spacing: 0;
+}
+.eyebrow, .label, .countdown .label, th { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.08em; }
+.nav a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.btn { font-family: var(--font-mono); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.9rem; }
+.search input { font-family: var(--font-mono); font-size: 1rem; }
